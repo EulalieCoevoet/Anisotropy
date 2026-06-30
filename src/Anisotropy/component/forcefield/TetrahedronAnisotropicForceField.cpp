@@ -26,10 +26,11 @@ namespace anisotropy::forcefield
 using namespace sofa::defaulttype;
 using namespace sofa::core;
 
-// Register in the Factory
-int TetrahedronAnisotropicForceFieldClass = RegisterObject("Tetrahedral finite elements")
-        .add< TetrahedronAnisotropicForceField<Vec3Types> >()
-        ;
+void registerTetrahedronAnisotropicForceField(ObjectFactory* factory)
+{
+    factory->registerObjects(ObjectRegistrationData("Anisotropic tetrahedral finite elements.")
+                            .add<  TetrahedronAnisotropicForceField<Vec3Types> >());
+}
 
 template class SOFA_ANISOTROPY_API TetrahedronAnisotropicForceField<Vec3Types>;
 

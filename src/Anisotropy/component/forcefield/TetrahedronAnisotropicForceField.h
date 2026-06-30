@@ -389,4 +389,5 @@ protected :
 #if !defined(ANISOTROPY_COMPONENT_FORCEFIELD_TETRAHEDRONANISOTROPICFORCEFIELD_CPP)
 extern template class SOFA_ANISOTROPY_API TetrahedronAnisotropicForceField<defaulttype::Vec3Types>;
 #endif
-}
+
+} // namespace

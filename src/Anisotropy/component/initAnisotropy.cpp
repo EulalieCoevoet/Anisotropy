@@ -22,10 +22,13 @@ using sofa::helper::system::PluginManager;
 
 #include <fstream>
 
-namespace sofa
+namespace anisotropy
 {
-namespace component
+
+namespace forcefield
 {
+extern void registerTetrahedronAnisotropicForceField(sofa::core::ObjectFactory* factory);
+}
 
 //Here are just several convenient functions to help user to know what contains the plugin
 
@@ -36,20 +39,29 @@ extern "C" {
     SOFA_ANISOTROPY_API const char* getModuleLicense();
     SOFA_ANISOTROPY_API const char* getModuleDescription();
     SOFA_ANISOTROPY_API const char* getModuleComponentList();
+    SOFA_ANISOTROPY_API void registerObjects(sofa::core::ObjectFactory* factory);
 }
 
-void initExternalModule()
+void init()
 {
     static bool first = true;
     if (first)
     {
         first = false;
     }
+
+    // make sure that this plugin is registered into the PluginManager
+    sofa::helper::system::PluginManager::getInstance().registerPlugin(MODULE_NAME);
+}
+
+void initExternalModule()
+{
+    init();
 }
 
 const char* getModuleName()
 {
-  return "ANISOTROPY";
+  return MODULE_NAME;
 }
 
 const char* getModuleVersion()
@@ -62,19 +74,14 @@ const char* getModuleLicense()
     return "GPL";
 }
 
-
 const char* getModuleDescription()
 {
-    return "The ANISOTROPY plugin builds reduced models by reducing the computational complexity of the system";
+    return "The Anisotropy plugin builds components for anisotropic simulations.";
 }
 
-const char* getModuleComponentList()
+void registerObjects(sofa::core::ObjectFactory* factory)
 {
-  /// string containing the names of the classes provided by the plugin
-  return "";
-  //return "MyMappingPendulumInPlane, MyBehaviorModel, MyProjectiveConstraintSet";
+    forcefield::registerTetrahedronAnisotropicForceField(factory);
 }
 
-
-} // namespace component
-} // namespace sofa
+} // namespace anisotropy
