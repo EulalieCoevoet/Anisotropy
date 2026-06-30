@@ -30,8 +30,8 @@
 
 #include <Anisotropy/component/forcefield/TetrahedronAnisotropicForceField.h>
 
-#include <sofa/simulation/TaskScheduler.h>
-#include <sofa/simulation/InitTasks.h>
+#include <sofa/simulation/task/TaskScheduler.h>
+#include <sofa/simulation/task/InitTasks.h>
 #include <sofa/helper/AdvancedTimer.h>
 
 #include <SoftRobots.Inverse/component/behavior/Actuator.h>
