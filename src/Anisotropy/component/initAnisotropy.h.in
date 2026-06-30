@@ -21,14 +21,17 @@
 #include <sofa/config.h>
 
 #ifdef SOFA_BUILD_ANISOTROPY
+#define SOFA_TARGET Anisotropy
 #define SOFA_ANISOTROPY_API SOFA_EXPORT_DYNAMIC_LIBRARY
 #else
 #define SOFA_ANISOTROPY_API SOFA_IMPORT_DYNAMIC_LIBRARY
 #endif
 
-/** \mainpage
-  This is a the starting page of the plugin documentation, defined in file initModelOrderReduction.h
-  */
+namespace anisotropy
+{
+    SOFA_ANISOTROPY_API void init();
+    constexpr const char* MODULE_NAME = "@PROJECT_NAME@";
+}
 
 #endif
 
