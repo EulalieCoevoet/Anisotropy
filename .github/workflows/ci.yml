@@ -31,6 +31,34 @@ jobs:
         with:
           path: ${{ env.WORKSPACE_SRC_PATH }}
 
+      - name: Install SoftRobots
+        shell: bash
+        run: |
+          SoftRobots_ROOT="$GITHUB_WORKSPACE/SoftRobots"
+          mkdir -p "${{ runner.temp }}/sp3_tmp/zip" "${{ runner.temp }}/sp3_tmp/binaries" "$SoftRobots_ROOT"
+          url="https://github.com/SofaDefrost/SoftRobots/releases/download"
+          url="${url}/release-${{ matrix.sofa_branch }}/SoftRobots_${{ matrix.sofa_branch }}_for-SOFA-${{ matrix.sofa_branch }}_${{ runner.os }}.zip"
+          echo "Getting SoftRobots from $url"
+          curl --output "${{ runner.temp }}/sp3_tmp/SoftRobots.zip" -L $url
+          unzip -qq "${{ runner.temp }}/sp3_tmp/SoftRobots.zip" -d "${{ runner.temp }}/sp3_tmp/binaries"
+          mv "${{ runner.temp }}"/sp3_tmp/binaries/SoftRobots_*/* "$SoftRobots_ROOT"
+          echo "SoftRobots_ROOT=$SoftRobots_ROOT" | tee -a $GITHUB_ENV
+          echo "SoftRobots_DIR=$SoftRobots_ROOT/lib/cmake/SoftRobots" | tee -a $GITHUB_ENV
+          
+      - name: Install SoftRobots.Inverse
+        shell: bash
+        run: |
+          SoftRobotsInverse_ROOT="$GITHUB_WORKSPACE/SoftRobotsInverse"
+          mkdir -p "${{ runner.temp }}/sp3_tmp/zip" "${{ runner.temp }}/sp3_tmp/binaries" "$SoftRobotsInverse_ROOT"
+          url="https://github.com/SofaDefrost/SoftRobots.Inverse/releases/download"
+          url="${url}/release-${{ matrix.sofa_branch }}/SoftRobots.Inverse_main_for-SOFA-${{ matrix.sofa_branch }}_${{ runner.os }}.zip"
+          echo "Getting SoftRobots.Inverse from $url"
+          curl --output "${{ runner.temp }}/sp3_tmp/SoftRobotsInverse.zip" -L $url
+          unzip -qq "${{ runner.temp }}/sp3_tmp/SoftRobotsInverse.zip" -d "${{ runner.temp }}/sp3_tmp/binaries"
+          mv "${{ runner.temp }}"/sp3_tmp/binaries/SoftRobotsInverse_*/* "$SoftRobotsInverse_ROOT"
+          echo "SoftRobotsInverse_ROOT=$SoftRobotsInverse_ROOT" | tee -a $GITHUB_ENV
+          echo "SoftRobotsInverse_DIR=$SoftRobotsInverse_ROOT/lib/cmake/SoftRobots.Inverse" | tee -a $GITHUB_ENV
+
       - name: Build and install
         id: build-and-install
         shell: bash
