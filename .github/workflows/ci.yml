@@ -55,7 +55,7 @@ jobs:
           echo "Getting SoftRobots.Inverse from $url"
           curl --output "${{ runner.temp }}/sp3_tmp/SoftRobotsInverse.zip" -L $url
           unzip -qq "${{ runner.temp }}/sp3_tmp/SoftRobotsInverse.zip" -d "${{ runner.temp }}/sp3_tmp/binaries"
-          mv "${{ runner.temp }}"/sp3_tmp/binaries/SoftRobotsInverse_*/* "$SoftRobotsInverse_ROOT"
+          mv "${{ runner.temp }}"/sp3_tmp/binaries/SoftRobots.Inverse_*/* "$SoftRobotsInverse_ROOT"
           echo "SoftRobotsInverse_ROOT=$SoftRobotsInverse_ROOT" | tee -a $GITHUB_ENV
           echo "SoftRobotsInverse_DIR=$SoftRobotsInverse_ROOT/lib/cmake/SoftRobots.Inverse" | tee -a $GITHUB_ENV
 
