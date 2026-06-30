@@ -9,7 +9,7 @@ sofa_find_package(Sofa.Simulation.Core REQUIRED)
 sofa_find_package(Sofa.Component.SolidMechanics.FEM.Elastic REQUIRED)
 sofa_find_package(Sofa.Topology REQUIRED)
 sofa_find_package(Sofa.GL REQUIRED)
-sofa_find_package(SoftRobots.Inverse REQUIRED)
+# sofa_find_package(SoftRobots.Inverse REQUIRED)
 
 set(Ani_SRC "src/Anisotropy/component/")
 
@@ -19,8 +19,8 @@ set(HEADER_FILES
     ${Ani_SRC}/forcefield/TetrahedronAnisotropicForceField.h
     ${Ani_SRC}/forcefield/TetrahedronAnisotropicForceField.inl
 
-    ${Ani_SRC}/constraint/AnisotropyControlPointActuator.h
-    ${Ani_SRC}/constraint/AnisotropyControlPointActuator.inl    
+    # ${Ani_SRC}/constraint/AnisotropyControlPointActuator.h
+    # ${Ani_SRC}/constraint/AnisotropyControlPointActuator.inl
     )
 
 set(SOURCE_FILES
@@ -28,7 +28,7 @@ set(SOURCE_FILES
 
     ${Ani_SRC}/forcefield/TetrahedronAnisotropicForceField.cpp
 
-    ${Ani_SRC}/constraint/AnisotropyControlPointActuator.cpp
+    # ${Ani_SRC}/constraint/AnisotropyControlPointActuator.cpp
     )
 
 set(README_FILES
@@ -39,8 +39,8 @@ add_library(${PROJECT_NAME} SHARED ${HEADER_FILES} ${SOURCE_FILES} ${README_FILE
 
 set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS "-DSOFA_BUILD_ANISOTROPY")
 target_link_libraries(${PROJECT_NAME}
-    SoftRobots
-    SoftRobots.Inverse
+    # SoftRobots
+    # SoftRobots.Inverse
     Sofa.Core
     Sofa.Component.SolidMechanics.FEM.Elastic
     Sofa.GL

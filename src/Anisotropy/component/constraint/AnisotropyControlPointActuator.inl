@@ -29,7 +29,7 @@
 #include <Anisotropy/component/constraint/AnisotropyControlPointActuator.h>
 #include <sofa/helper/cast.h>
 #include <sofa/helper/AdvancedTimer.h>
-#include <sofa/simulation/MainTaskSchedulerFactory.h>
+#include <sofa/simulation/task/MainTaskSchedulerFactory.h>
 
 #include <iomanip>
 
