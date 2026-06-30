@@ -51,7 +51,7 @@ jobs:
           SoftRobotsInverse_ROOT="$GITHUB_WORKSPACE/SoftRobotsInverse"
           mkdir -p "${{ runner.temp }}/sp3_tmp/zip" "${{ runner.temp }}/sp3_tmp/binaries" "$SoftRobotsInverse_ROOT"
           url="https://github.com/SofaDefrost/SoftRobots.Inverse/releases/download"
-          url="${url}/release-${{ matrix.sofa_branch }}/SoftRobots.Inverse_main_for-SOFA-${{ matrix.sofa_branch }}_${{ runner.os }}.zip"
+          url="${url}/release-main/SoftRobots.Inverse_main_for-SOFA-${{ matrix.sofa_branch }}_${{ runner.os }}.zip"
           echo "Getting SoftRobots.Inverse from $url"
           curl --output "${{ runner.temp }}/sp3_tmp/SoftRobotsInverse.zip" -L $url
           unzip -qq "${{ runner.temp }}/sp3_tmp/SoftRobotsInverse.zip" -d "${{ runner.temp }}/sp3_tmp/binaries"
